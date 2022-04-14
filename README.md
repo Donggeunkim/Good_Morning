@@ -10,6 +10,8 @@ CRA2022_#10_Java_Good_Morning Team Repo
 5. 9시 이전 16시 이후 commit 금지
 6. 리뷰할 때 칭찬을 자주 하기 / 열린 마음으로 코드리뷰 받아들이기
 7. 의견 충돌시에는 다수결로 결정, 동일한 표일 경우 팀장이 결정
+8. 티미팅 : 매일 08:30부터 10분정도
+9. 공동코드리뷰 : 매일 16:00부터
 
 
 # 팀 프로젝트 진행
@@ -38,8 +40,10 @@ CRA2022_#10_Java_Good_Morning Team Repo
 ## 5. 구현 시 협업
  -. 초기 설계도는 4명이 모두 그린 후 공유하여 최종 팀 설계도를 만든다  
  -. 모두 자바에 익숙치 않으니 각자 맡은 개발과제를 하면서 서로 도와주자  
- -. 
 
 ## 6. 요구 사항 분배
- -. 
+ -. 태현님 : employee + employeehandler + parser  
+ -. 영지님 : Sch_base + Sch_command (옵션까지)  
+ -. 민환님 : del_Command + add + command  
+ -. 동근님 : mod_command + file i/o  
  

@@ -1,10 +1,14 @@
 package Good_Morning;
 
-import java.io.IOException;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 
-public class Main {
-    public static void main(String[ ] args) throws IOException {
+import static org.junit.jupiter.api.Assertions.*;
+
+class SchCommandTest {
+    @Test
+    void search_test(){
         EmployeeHandler emphandler = new EmployeeHandler();
         emphandler.addEmployee("18025906","KIM YOUNGJI","CL2","010-6654-9105","19941115","PRO");
         emphandler.addEmployee("98025906","KIM YOUNGSAM","CL3","010-6654-9107","19670814","PRO");
@@ -18,6 +22,7 @@ public class Main {
         ArrayList<String> schItem = new ArrayList<>();
         schItem.add("cl");
         schItem.add("CL2");
-        emphandler.searchEmployee(option, schItem);
+
+        assertEquals(2,emphandler.searchEmployee(option, schItem));
     }
 }

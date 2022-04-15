@@ -22,7 +22,7 @@ CRA2022_#10_Java_Good_Morning Team Repo
   [style] 코드 스타일 혹은 포맷 등에 관한 커밋  
   [refactor] 코드 리팩토링에 대한 커밋  
   [test] 테스트 코드 수정에 대한 커밋  
-  [chore] : 그 외 자잘한 수정에 대한 커밋(기타 변경사항)
+  [chore] : 그 외 자잘한 수정에 대한 커밋(기타 변경사항)  
   ※ 출처 : https://xtring-dev.tistory.com/entry/Git-규칙적인-Commit-메세지로-개발팀-협업하기-👾
 
 ## 2. Coding Style : Google 코딩 스타일을 따른다. 

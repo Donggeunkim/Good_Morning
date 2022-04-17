@@ -1,6 +1,5 @@
 package Good_Morning;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -42,10 +41,10 @@ public class SchCommand {
                         String phoneNum = entry.getValue().getPhoneNum();
 
                         if(option.get(1).equals("m")){
-                            phoneNum = phoneNum.substring(3,6);
+                            phoneNum = phoneNum.substring(4,7);
                         }
                         else if(option.get(1).equals("l")){
-                            phoneNum = phoneNum.substring(7);
+                            phoneNum = phoneNum.substring(9);
                         }
 
                         if(phoneNum.equals(schValue)){
@@ -79,9 +78,4 @@ public class SchCommand {
         }
         return result;
     }
-
-    public String executeOriginJob(){
-        return "";
-    }
-
 }

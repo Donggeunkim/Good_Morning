@@ -12,12 +12,12 @@ public class Main {
 
         ArrayList<String> option = new ArrayList<>();
         option.add("p");
-        option.add("");
+        option.add("d");
         option.add("");
 
         ArrayList<String> schItem = new ArrayList<>();
-        schItem.add("cl");
-        schItem.add("CL2");
+        schItem.add("birthday");
+        schItem.add("07");
         emphandler.searchEmployee(option, schItem);
     }
 }

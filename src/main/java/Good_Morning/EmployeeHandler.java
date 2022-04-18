@@ -38,7 +38,7 @@ public class EmployeeHandler {
     public void AddEmployee(ArrayList<String> options, ArrayList<String> parameters){
         AddCommand addCommand = new AddCommand(options, parameters);
         Employee employeeData = addCommand.ExecuteJob();
-        employee.put(employeeData.getEmployeeNum(), employeeData);
+        employee_.put(employeeData.getEmployeeNum(), employeeData);
     }
 
     public EmployeeHandler(){
@@ -55,12 +55,12 @@ public class EmployeeHandler {
 
     public void DeleteEmployee(ArrayList<String> option, ArrayList<String> schItem){
         DelCommand searchBase = new DelCommand();
-        ArrayList<String> employeeList = searchBase.executeJob(this.employee, option, schItem);
+        ArrayList<String> employeeList = searchBase.executeJob(this.employee_, option, schItem);
 
-        PrintEmployee(employeeList, option.get(0).equals("-p"));
+        //PrintEmployee(employeeList, option.get(0).equals("-p"));
 
         for(String employeeNum : employeeList) {
-            employee.remove(employeeNum);
+            employee_.remove(employeeNum);
         }
     }
 

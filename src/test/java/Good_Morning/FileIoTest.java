@@ -11,40 +11,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
-public class File_IO_test {
-    File_IO file_io;
+public class FileIoTest {
+    FileIo file_io;
 
     @BeforeEach
     void SetUp() {
-        file_io = mock(File_IO.class);
+        file_io = mock(FileIo.class);
     }
 
     @Test
-    void checkFileName_test() {
-        assertEquals(false, file_io.checkFileName("input.txy"));
-        assertEquals(true, file_io.checkFileName("input.txt"));
+    void CheckFileName_test() {
+        assertEquals(false, file_io.CheckFileName("input.txy"));
+        assertEquals(true, file_io.CheckFileName("input.txt"));
     }
 
     @Test
-    void readInputFile_test(){
+    void ReadInputFile_test(){
         String filePath = null;
-        assertThrows(NullPointerException.class, () -> file_io.readInputFile(filePath));
+        assertThrows(NullPointerException.class, () -> file_io.ReadInputFile(filePath));
 
         String filePath2 = "NoneFile.txt";
-        assertThrows(IOException.class, () -> file_io.readInputFile(filePath2));
+        assertThrows(IOException.class, () -> file_io.ReadInputFile(filePath2));
     }
 
     @Test
-    void writePrint2File(){
+    void WritePrint2File(){
         String filePath = null;
         ArrayList<String> printList = new ArrayList<String>(
                 Arrays.asList("ADD, , , ,04766290,BAE UDQJNXD,CL1,010-7899-1662,19770102,ADV",
                               "ADD, , , ,14387681,CHOI HMDEJXV,CL3,010-0424-2511,19870508,ADV",
                               "ADD, , , ,18050301,KYUMOK KIM,CL2,010-9777-6055,19980906,PRO"));
 
-        assertThrows(NullPointerException.class, () -> file_io.writePrint2File(filePath, printList));
-
-//        String filePath2 = "writeTest.txt";
-//        assertThrows(IOException.class, () -> file_io.writePrint2File(filePath2, printList));
+        assertThrows(NullPointerException.class, () -> file_io.WritePrint2File(filePath, printList));
     }
 }

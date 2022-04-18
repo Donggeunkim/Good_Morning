@@ -25,7 +25,7 @@ public class Employee {
 
     public void setEmployedYear(String employeeNum) {
         int year = Integer.parseInt(employeeNum.substring(0,2));
-        if (year > 0 && year < 22)
+        if (year < 22)
             this.employedYear = 2000 + year;
         else
             this.employedYear = 1900 + year;
@@ -37,6 +37,7 @@ public class Employee {
 
     public void setEmployeeNum(String employeeNum) {
         this.employeeNum = employeeNum;
+        setEmployedYear(employeeNum);
     }
 
     public String getName() {

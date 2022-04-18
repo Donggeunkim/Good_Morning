@@ -1,12 +1,9 @@
 package Good_Morning;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.*;
 
 public class EmployeeHandler {
-    public HashMap<String, Employee> employee;
+    public TreeMap<String, Employee> employee;
     public ArrayList<String> searchResult;
 
     private ArrayList<Employee> sortEmployee(){
@@ -43,7 +40,7 @@ public class EmployeeHandler {
     }
 
     public EmployeeHandler(){
-        employee = new HashMap<>();
+        employee = new TreeMap<>();
         searchResult = new ArrayList<>();
     }
 

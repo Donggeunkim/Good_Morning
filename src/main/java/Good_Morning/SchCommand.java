@@ -13,6 +13,7 @@ public class SchCommand {
         String schKey = schItem.get(0);
         String schValue = schItem.get(1);
 
+
         if (schKey.equals("employeeNum")){
             result.add(employee.get(schValue).getEmployeeNum());
         }

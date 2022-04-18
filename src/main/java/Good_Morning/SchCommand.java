@@ -8,6 +8,8 @@ import java.util.Set;
 public class SchCommand {
 
     public ArrayList<String> executeJob(HashMap<String, Employee> employee, ArrayList<String> option, ArrayList<String> schItem){
+        if(employee==null) // validation check
+            return null;
         ArrayList<String> result = new ArrayList<>();
         String schKey = schItem.get(0);
         String schValue = schItem.get(1);

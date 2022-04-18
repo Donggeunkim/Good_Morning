@@ -27,10 +27,12 @@ public class EmployeeHandler {
 
     public void deleteEmployee(ArrayList<String> option, ArrayList<String> searchItem){
         DelCommand searchBase = new DelCommand();
-        ArrayList<String> employeeList = searchBase.executeJob(this.employee, option, searchItem);
+        searchResult = searchBase.executeJob(this.employee, option, searchItem);
 
-        for(String employeeNum : employeeList) {
-            employee.remove(employeeNum);
+        printEmployee("DEL", option);
+
+        for(String employeeYearNum : searchResult) {
+            employee.remove(employeeYearNum);
         }
     }
 

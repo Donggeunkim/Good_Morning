@@ -44,4 +44,13 @@ public class FileIoTest {
 
         assertThrows(NullPointerException.class, () -> FileIo.writePrint2File(filePath, printList));
     }
+
+    @Test
+    void isValidFileNameTest(){
+        assertEquals(false, fileIo.isValidFileName("../input.txy"));
+        assertEquals(false, fileIo.isValidFileName("\\input.txy"));
+        assertEquals(false, fileIo.isValidFileName("*#input.txy"));
+        assertEquals(true, fileIo.isValidFileName("input.txt"));
+        assertEquals(true, fileIo.isValidFileName("Input_Text.txt"));
+    }
 }

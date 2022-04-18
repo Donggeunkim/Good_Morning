@@ -37,8 +37,8 @@ public class EmployeeHandler {
   
     public void addEmployee(ArrayList<String> options, ArrayList<String> parameters){
         AddCommand addCommand = new AddCommand(options, parameters);
-        Employee employeeData = addCommand.ExecuteJob();
-        employee.put(employeeData.getEmployeeNum(), employeeData);
+        Employee employeeData = addCommand.ExecuteJob(this.employee, options, parameters);
+        if(employeeData != null) employee.put(employeeData.getEmployeeNum(), employeeData);
     }
 
     public EmployeeHandler(){

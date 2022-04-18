@@ -1,14 +1,15 @@
 package Good_Morning;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AddCommand extends Command{
-    private String employeeNum;
-    private String name;
-    private String cl;
-    private String phoneNum;
-    private String birthday;
-    private String certi;
+    String employeeNum;
+    String name;
+    String cl;
+    String phoneNum;
+    String birthday;
+    String certi;
 
     public AddCommand(ArrayList<String> options, ArrayList<String> parameters) {
         super(options, parameters);
@@ -20,8 +21,15 @@ public class AddCommand extends Command{
         this.certi = parameters.get(5);
     }
 
-    public Employee ExecuteJob() {
-        Employee employeeData = new Employee(employeeNum, name, cl, phoneNum, birthday, certi);
+    @Override
+    public Employee ExecuteJob(HashMap<String, Employee> employee, ArrayList<String> options, ArrayList<String> parameters) {
+        if(isExistEmployeeNum(employee)) return null;
+        Employee employeeData = new Employee(this.employeeNum, this.name, this.cl, this.phoneNum, this.birthday, this.certi);
         return employeeData;
+    }
+
+    private boolean isExistEmployeeNum(HashMap<String, Employee> employee) {
+        if(employee.get(this.employeeNum) == null) return false;
+        return true;
     }
 }

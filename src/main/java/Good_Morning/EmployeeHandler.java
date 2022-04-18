@@ -36,7 +36,7 @@ public class EmployeeHandler {
         AddCommand addCommand = new AddCommand(options, parameters);
         Employee employeeData = addCommand.ExecuteJob(this.employee, options, parameters);
         //Add Sort Logic
-        if(employeeData != null) employee.put(employeeData.getEmployeeNum(), employeeData);
+        if(employeeData != null) employee.put(employeeData.getEmployedYearNum(), employeeData);
     }
 
     public EmployeeHandler(){

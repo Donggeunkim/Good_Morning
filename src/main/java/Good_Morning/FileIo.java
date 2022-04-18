@@ -8,83 +8,84 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class FileIo {
-    public static ArrayList<String> input_CmdList;
-    public static String file_Name;
+    public static ArrayList<String> inputCmdList;
+    public static String fileName;
 
-    public static ArrayList<String> ReadInputFile(String file_Path) throws IOException {
+    public static ArrayList<String> readInputFile(String filePath) throws IOException {
 
         try {
-            File file_Object = new File(file_Path);
-            file_Name = file_Object.getName();
+            File fileObject = new File(filePath);
+            fileName = fileObject.getName();
         }catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
 
         // 경로 및 파일명 체크
-        if (!IsValidFileName(file_Path)) return null;
+        if (!isValidFileName(filePath)) return null;
 
         // 확장자 체크
-        if(!CheckFileName(file_Name)) {
+        if(!checkFileName(fileName)) {
             System.out.println("ERROR :: File extension NOT 'TXT'");
             return null;
         }
 
-        input_CmdList = (ArrayList<String>) Files.readAllLines(Paths.get(file_Path));
-        return input_CmdList;
+        inputCmdList = (ArrayList<String>) Files.readAllLines(Paths.get(filePath));
+        return inputCmdList;
     }
 
-    public static void WritePrint2File(String file_Path, ArrayList<String> output_Print_List) throws IOException {
+    public static void writePrint2File(String filePath, ArrayList<String> outputPrintList) throws IOException {
 
         try {
-            File file_Object = new File(file_Path);
-            file_Name = file_Object.getName();
+            File fileObject = new File(filePath);
+            fileName = fileObject.getName();
         }catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
 
         // 경로 및 파일명 체크
-        if (!IsValidFileName(file_Path)) return;
+        if (!isValidFileName(filePath)) return;
 
         // 확장자 체크
-        if(!CheckFileName(file_Name)) {
+        if(!checkFileName(fileName)) {
             System.out.println("ERROR :: File extension NOT 'TXT'");
             return;
         }
 
-        FileWriter writer = new FileWriter(file_Path);
-        for(String str: output_Print_List) {
+        FileWriter writer = new FileWriter(filePath);
+        for(String str: outputPrintList) {
             writer.write(str + System.lineSeparator());
         }
         writer.close();
     }
 
-    public static boolean CheckFileName(String file_Name){
-        String ext = file_Name.substring(file_Name.lastIndexOf(".") + 1);
+    public static boolean checkFileName(String fileName){
+        String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
         if (ext.equals("txt")) return true;
         return false;
     }
 
-    private static boolean IsValidFileName(String file_Path) {
+    public static boolean isValidFileName(String filePath) {
         //'/'와 '\' 이 두가지가 들어오면 안된다.
-        for (int i = 0; i < file_Path.length(); i++) {
-            if (file_Path.charAt(i) == '/') return false;
-            if (file_Path.charAt(i) == '\\') return false;
+        for (int i = 0; i < filePath.length(); i++) {
+            if (filePath.charAt(i) == '/') return false;
+            if (filePath.charAt(i) == '\\') return false;
         }
         //길이는 1 ~ 30 글자 까지 허용
-        if (!(file_Path.length() >= 1 && file_Path.length() <= 30)) return false;
+        if (!(filePath.length() >= 1 && filePath.length() <= 30)) return false;
         //. [] () , 띄어쓰기, AZ, az, 0 9 까지 허용
-        for (int i = 0; i < file_Path.length(); i++) {
-            if (file_Path.charAt(i) == '.') continue;
-            if (file_Path.charAt(i) == '[') continue;
-            if (file_Path.charAt(i) == ']') continue;
-            if (file_Path.charAt(i) == '(') continue;
-            if (file_Path.charAt(i) == ')') continue;
-            if (file_Path.charAt(i) == ' ') continue;
-            if (file_Path.charAt(i) >= 'A' && file_Path.charAt(i) <= 'Z') continue;
-            if (file_Path.charAt(i) >= 'a' && file_Path.charAt(i) <= 'z') continue;
-            if (file_Path.charAt(i) >= '0' && file_Path.charAt(i) <= '9') continue;
+        for (int i = 0; i < filePath.length(); i++) {
+            if (filePath.charAt(i) == '.') continue;
+            if (filePath.charAt(i) == '[') continue;
+            if (filePath.charAt(i) == ']') continue;
+            if (filePath.charAt(i) == '(') continue;
+            if (filePath.charAt(i) == ')') continue;
+            if (filePath.charAt(i) == ' ') continue;
+            if (filePath.charAt(i) == '_') continue;
+            if (filePath.charAt(i) >= 'A' && filePath.charAt(i) <= 'Z') continue;
+            if (filePath.charAt(i) >= 'a' && filePath.charAt(i) <= 'z') continue;
+            if (filePath.charAt(i) >= '0' && filePath.charAt(i) <= '9') continue;
             return false;
         }
         return true;

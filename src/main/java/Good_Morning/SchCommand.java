@@ -1,6 +1,5 @@
 package Good_Morning;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -12,77 +11,35 @@ public class SchCommand {
         ArrayList<String> result = new ArrayList<>();
         String schKey = schItem.get(0);
         String schValue = schItem.get(1);
+        SchHandler schHandler = SetSchType(schKey);
+        String resultEmpNum = null;
 
 
         if (schKey.equals("employeeNum")){
-            result.add(employee.get(schValue).getEmployeeNum());
+            resultEmpNum = schHandler.searchEmpNum(employee, option, schValue);
+            if(resultEmpNum != null)
+                result.add(resultEmpNum);
         }
         else {
             Set<Entry<String, Employee>> entrySet = employee.entrySet();
             for(Entry<String, Employee> entry : entrySet) {
-                switch(schKey){
-                    case "name" :
-                        String name = entry.getValue().getName();
-
-                        if(option.get(1).equals("f")) {
-                            name = name.split(" ")[0];
-                        }
-                        else if(option.get(1).equals("l")){
-                            name = name.split(" ")[1];
-                        }
-                        if(name.equals(schValue)){
-                            result.add(entry.getValue().getEmployeeNum());
-                        }
-                        break;
-                    case "cl" :
-                        if(entry.getValue().getCl().equals(schValue)){
-                            result.add(entry.getValue().getEmployeeNum());
-                        }
-                        break;
-                    case "phoneNum" :
-                        String phoneNum = entry.getValue().getPhoneNum();
-
-                        if(option.get(1).equals("m")){
-                            phoneNum = phoneNum.substring(3,6);
-                        }
-                        else if(option.get(1).equals("l")){
-                            phoneNum = phoneNum.substring(7);
-                        }
-
-                        if(phoneNum.equals(schValue)){
-                            result.add(entry.getValue().getEmployeeNum());
-                        }
-                        break;
-                    case "birthday" :
-                        String birthday = entry.getValue().getBirthday();
-
-                        if(option.get(1).equals("y")){
-                            birthday = birthday.substring(0,3);
-                        }
-                        else if(option.get(1).equals("m")){
-                            birthday = birthday.substring(4,5);
-                        }
-                        else if(option.get(1).equals("d")){
-                            birthday = birthday.substring(6);
-                        }
-
-                        if(birthday.equals(schValue)){
-                            result.add(entry.getValue().getEmployeeNum());
-                        }
-                        break;
-                    case "certi" :
-                        if(entry.getValue().getCerti().equals(schValue)){
-                            result.add(entry.getValue().getEmployeeNum());
-                        }
-                        break;
-                }
+                resultEmpNum = schHandler.searchEmpNum(entry, option, schValue);
+                if(resultEmpNum != null)
+                    result.add(resultEmpNum);
             }
         }
         return result;
     }
 
-    public String executeOriginJob(){
-        return "";
-    }
+    private SchHandler SetSchType(String schKey){
+        SchHandler schHandler = null;
+        if(schKey.equals("employeeNum")) schHandler = new SchWithEmpNum();
+        if(schKey.equals("name")) schHandler = new SchWithName();
+        if(schKey.equals("cl")) schHandler = new SchWithCl();
+        if(schKey.equals("phoneNum")) schHandler = new SchWithPhoneNum();
+        if(schKey.equals("birthday")) schHandler = new SchWithBirthday();
+        if(schKey.equals("certi")) schHandler = new SchWithCerti();
 
+        return schHandler;
+    }
 }

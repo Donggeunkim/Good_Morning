@@ -29,7 +29,7 @@ public class Main {
                     break;
                 case "SCH":
                     employeeHandler.searchEmployee(parser.getOptions(), parser.getValues());
-                    employeeHandler.printEmployee(parser.getCommand(), parser.getOptions(), parser.getValues());
+                    employeeHandler.printEmployee(parser.getCommand(), parser.getOptions());
                     break;
                 case "DEL":
                     employeeHandler.deleteEmployee(parser.getOptions(), parser.getValues());

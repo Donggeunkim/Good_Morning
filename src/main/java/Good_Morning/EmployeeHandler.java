@@ -38,7 +38,7 @@ public class EmployeeHandler {
     }
 
     // Del이나 Mod동작 SCH -> Print -> DEL or MOD ??
-    public void printEmployee(String Command, ArrayList<String> option, ArrayList<String> searchItem){
+    public void printEmployee(String Command, ArrayList<String> option){
         if(searchResult.size()==0) System.out.println(Command + ",NONE");
         else {
             if (option.get(0).equals("-p")) {

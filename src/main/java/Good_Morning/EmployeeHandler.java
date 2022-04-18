@@ -64,6 +64,11 @@ public class EmployeeHandler {
     }
 
     public void modifyEmployee(ArrayList<String> option, ArrayList<String> searchItem){
+        SchCommand search_base = new SchCommand();
+        ModCommand modCommand = new ModCommand();
+
+        searchResult = search_base.executeJob(this.employee, option, searchItem);
+        modCommand.executeJob(this.employee, searchResult, searchItem);
     }
 
     // Del이나 Mod동작 SCH -> Print -> DEL or MOD ??

@@ -44,4 +44,20 @@ class SchCommandTest {
         assertEquals(2,emphandler.searchEmployee(option2, schItem2));
 
     }
+
+    @Test
+    void search_employNum_null_test() {
+        EmployeeHandler emphandler = new EmployeeHandler();
+
+        ArrayList<String> option1 = new ArrayList<>();
+        option1.add(" ");
+        option1.add(" ");
+        option1.add(" ");
+
+        ArrayList<String> schItem = new ArrayList<>();
+        schItem.add("employeeNum");
+        schItem.add("14016093");
+
+        assertDoesNotThrow(() -> emphandler.searchEmployee(option1, schItem));
+    }
 }

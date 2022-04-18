@@ -4,26 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-abstract class SchHandler{
-    public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue){
-        return null;
-    }
-    public String searchEmpNum(HashMap<String, Employee> employee, ArrayList<String> option, String schValue){
-        return null;
-    }
+interface SchHandler<T>{
+    String searchEmpNum(T employeeEntry, ArrayList<String> option, String schValue);
 }
 
-class SchWithPhoneNum extends SchHandler{
+class schWithPhoneNum implements SchHandler<Entry<String, Employee>>{
     @Override
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         ArrayList<String> result = new ArrayList<>();
         String findOption = option.get(1);
         String phoneNum = employeeEntry.getValue().getPhoneNum();
 
-        if(findOption.equals("m")) {
+        if(findOption.equals("-m")) {
             phoneNum = phoneNum.split("-")[1];
         }
-        else if(findOption.equals("l")){
+        else if(findOption.equals("-l")){
             phoneNum = phoneNum.split("-")[2];
         }
         if(phoneNum.equals(schValue)){
@@ -33,7 +28,7 @@ class SchWithPhoneNum extends SchHandler{
     }
 }
 
-class SchWithCl extends SchHandler{
+class schWithCl implements SchHandler<Entry<String, Employee>>{
     @Override
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         String cl = employeeEntry.getValue().getCl();
@@ -44,19 +39,19 @@ class SchWithCl extends SchHandler{
     }
 }
 
-class SchWithBirthday extends SchHandler{
+class schWithBirthday implements SchHandler<Entry<String, Employee>>{
     @Override
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         String birthday = employeeEntry.getValue().getBirthday();
         String findOption = option.get(1);
 
-        if(findOption.equals("y")){
+        if(findOption.equals("-y")){
             birthday = birthday.substring(0,3);
         }
-        else if(findOption.equals("m")){
+        else if(findOption.equals("-m")){
             birthday = birthday.substring(4,5);
         }
-        else if(findOption.equals("d")){
+        else if(findOption.equals("-d")){
             birthday = birthday.substring(6);
         }
 
@@ -67,7 +62,7 @@ class SchWithBirthday extends SchHandler{
     }
 }
 
-class SchWithCerti extends SchHandler{
+class schWithCerti implements SchHandler<Entry<String, Employee>>{
     @Override
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         String certi = employeeEntry.getValue().getCerti();
@@ -78,23 +73,23 @@ class SchWithCerti extends SchHandler{
     }
 }
 
-class SchWithEmpNum extends SchHandler{
+class schWithEmpNum implements SchHandler<HashMap<String, Employee>>{
     @Override
     public String searchEmpNum(HashMap<String, Employee> employee, ArrayList<String> option, String schValue) {
+        if(!employee.containsKey(schValue)) return null; // validation 메서드로 뺄까..?
         return employee.get(schValue).getEmployeeNum();
     }
-
 }
 
-class SchWithName extends SchHandler{
+class schWithName implements SchHandler<Entry<String, Employee>>{
     @Override
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         String name = employeeEntry.getValue().getName();
         String findOption = option.get(1);
-        if(findOption.equals("f")) {
+        if(findOption.equals("-f")) {
             name = name.split(" ")[0];
         }
-        else if(findOption.equals("l")){
+        else if(findOption.equals("-l")){
             name = name.split(" ")[1];
         }
         if(name.equals(schValue)){

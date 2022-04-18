@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class File_IO {
+public class FileIo {
     public static ArrayList<String> inputCmdList;
     public static String fileName;
 
@@ -58,7 +58,6 @@ public class File_IO {
             writer.write(str + System.lineSeparator());
         }
         writer.close();
-
     }
 
     public static boolean checkFileName(String fileName){
@@ -67,7 +66,7 @@ public class File_IO {
         return false;
     }
 
-    private static boolean isValidFileName(String filePath) {
+    public static boolean isValidFileName(String filePath) {
         //'/'와 '\' 이 두가지가 들어오면 안된다.
         for (int i = 0; i < filePath.length(); i++) {
             if (filePath.charAt(i) == '/') return false;
@@ -83,6 +82,7 @@ public class File_IO {
             if (filePath.charAt(i) == '(') continue;
             if (filePath.charAt(i) == ')') continue;
             if (filePath.charAt(i) == ' ') continue;
+            if (filePath.charAt(i) == '_') continue;
             if (filePath.charAt(i) >= 'A' && filePath.charAt(i) <= 'Z') continue;
             if (filePath.charAt(i) >= 'a' && filePath.charAt(i) <= 'z') continue;
             if (filePath.charAt(i) >= '0' && filePath.charAt(i) <= '9') continue;

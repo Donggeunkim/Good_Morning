@@ -14,6 +14,7 @@ public class SchCommand {
         SchHandler schHandler = SetSchType(schKey);
         String resultEmpNum = null;
 
+
         if (schKey.equals("employeeNum")){
             resultEmpNum = schHandler.searchEmpNum(employee, option, schValue);
             if(resultEmpNum != null)

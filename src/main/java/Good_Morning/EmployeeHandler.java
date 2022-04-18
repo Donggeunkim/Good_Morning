@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
-public class employeeHandler {
+public class EmployeeHandler {
     public HashMap<String, Employee> employee;
     public ArrayList<String> searchResult;
 
@@ -41,7 +41,7 @@ public class employeeHandler {
         employee.put(employeeData.getEmployeeNum(), employeeData);
     }
 
-    public employeeHandler(){
+    public EmployeeHandler(){
         employee = new HashMap<>();
         searchResult = new ArrayList<>();
     }

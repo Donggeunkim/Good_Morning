@@ -9,7 +9,7 @@ public class Main {
         FileIo fileIo = new FileIo();
         ArrayList<String> commandLines = fileIo.readInputFile(filePath);
 
-        employeeHandler employeeHandler = new employeeHandler();
+        EmployeeHandler employeeHandler = new EmployeeHandler();
         Parser parser = new Parser();
         for(String commandLine : commandLines) {
             parser.splitCommnadLine(commandLine);

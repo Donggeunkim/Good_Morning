@@ -26,7 +26,8 @@ CRA2022_#10_Java_Good_Morning Team Repo
   ※ 출처 : https://xtring-dev.tistory.com/entry/Git-규칙적인-Commit-메세지로-개발팀-협업하기-👾
 
 ## 2. Coding Style : Google 코딩 스타일을 따른다. 
-출처 : https://jinuk97-dev.tistory.com/9
+ ★ 220418 - 자바용 Google 코딩 스타일로 변경  
+출처 : https://newwisdom.tistory.com/96
 
 ## 3. 리뷰 정책(그라운드 룰 반영)
  -. 리뷰를 응답하는 데 하루를 넘기지 말자  

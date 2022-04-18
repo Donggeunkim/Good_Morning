@@ -46,10 +46,10 @@ class schWithBirthday implements SchHandler<Entry<String, Employee>>{
         String findOption = option.get(1);
 
         if(findOption.equals("-y")){
-            birthday = birthday.substring(0,3);
+            birthday = birthday.substring(0,4);
         }
         else if(findOption.equals("-m")){
-            birthday = birthday.substring(4,5);
+            birthday = birthday.substring(4,6);
         }
         else if(findOption.equals("-d")){
             birthday = birthday.substring(6);

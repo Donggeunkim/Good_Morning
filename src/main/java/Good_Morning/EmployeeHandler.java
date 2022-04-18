@@ -41,7 +41,7 @@ public class EmployeeHandler {
     public void printEmployee(String Command, ArrayList<String> option, ArrayList<String> searchItem){
         if(searchResult.size()==0) System.out.println(Command + ",NONE");
         else {
-            if (option.get(0).equals("p")) {
+            if (option.get(0).equals("-p")) {
                 ArrayList<Employee> sortResult = new ArrayList<Employee>();
                 for(String employeeNum : searchResult){
                     sortResult.add(this.employee.get(employeeNum));

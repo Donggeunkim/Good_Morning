@@ -5,29 +5,29 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[ ] args) throws IOException {
-        String file_path = "input.txt";
-        File_IO file_io = new File_IO();
-        ArrayList<String> command_lines = file_io.readInputFile(file_path);
+        String filePath = "input.txt";
+        FileIo fileIo = new FileIo();
+        ArrayList<String> commandLines = fileIo.readInputFile(filePath);
 
-        EmployeeHandler employee_handler = new EmployeeHandler();
+        employeeHandler employeeHandler = new employeeHandler();
         Parser parser = new Parser();
-        for(String command_line : command_lines) {
-            parser.SplitCommnadLine(command_line);
+        for(String commandLine : commandLines) {
+            parser.splitCommnadLine(commandLine);
 
             // main에서 처리?
-            switch (parser.GetCommand()){
+            switch (parser.getCommand()){
                 case "ADD":
-                    employee_handler.AddEmployee(parser.GetOptions(), parser.GetValues());
+                    employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
                     break;
                 case "SCH":
-                    employee_handler.SearchEmployee(parser.GetOptions(), parser.GetValues());
-                    employee_handler.PrintEmployee(parser.GetCommand(), parser.GetOptions(), parser.GetValues());
+                    employeeHandler.searchEmployee(parser.getOptions(), parser.getValues());
+                    employeeHandler.printEmployee(parser.getCommand(), parser.getOptions(), parser.getValues());
                     break;
                 case "DEL":
-                    employee_handler.DeleteEmployee(parser.GetOptions(), parser.GetValues());
+                    employeeHandler.deleteEmployee(parser.getOptions(), parser.getValues());
                     break;
                 case "MOD":
-                    employee_handler.ModifyEmployee(parser.GetOptions(), parser.GetValues());
+                    employeeHandler.modifyEmployee(parser.getOptions(), parser.getValues());
                     break;
                 default :
                     break;

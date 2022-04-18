@@ -34,15 +34,16 @@ public class EmployeeHandler {
 
         return sort_result;
     }
+  
+    public void AddEmployee(ArrayList<String> options, ArrayList<String> parameters){
+        AddCommand addCommand = new AddCommand(options, parameters);
+        Employee employeeData = addCommand.ExecuteJob();
+        employee.put(employeeData.getEmployeeNum(), employeeData);
+    }
 
     public EmployeeHandler(){
         employee_ = new HashMap<>();
         search_result_ = new ArrayList<>();
-    }
-
-    public void AddEmployee(ArrayList<String> option, ArrayList<String> search_item){
-        AddCommand add_command = new AddCommand();
-        add_command.executeJob(employee_, option, search_item);
     }
 
     public int SearchEmployee(ArrayList<String> option, ArrayList<String> search_item){
@@ -52,7 +53,15 @@ public class EmployeeHandler {
         return search_result_.size();
     }
 
-    public void DeleteEmployee(ArrayList<String> option, ArrayList<String> search_item){
+    public void DeleteEmployee(ArrayList<String> option, ArrayList<String> schItem){
+        DelCommand searchBase = new DelCommand();
+        ArrayList<String> employeeList = searchBase.executeJob(this.employee, option, schItem);
+
+        PrintEmployee(employeeList, option.get(0).equals("-p"));
+
+        for(String employeeNum : employeeList) {
+            employee.remove(employeeNum);
+        }
     }
 
     public void ModifyEmployee(ArrayList<String> option, ArrayList<String> search_item){

@@ -79,4 +79,8 @@ public class Employee {
     public void setCerti(String certi) {
         this.certi = certi;
     }
+
+    public void SetPrintInfo(String certi) {
+        this.certi = certi;
+    }
 }

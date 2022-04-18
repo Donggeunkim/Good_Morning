@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Main_test" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-15T01:08:22" hostname="DESKTOP-VJFJMN0" time="0.032">
-  <properties/>
-  <testcase name="sum_test()" classname="Main_test" time="0.032"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

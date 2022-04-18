@@ -6,17 +6,17 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 public class EmployeeHandler {
-    public HashMap<String, Employee> employee_;
-    public ArrayList<String> search_result_;
+    public HashMap<String, Employee> employee;
+    public ArrayList<String> searchResult;
 
-    private ArrayList<Employee> SortEmployee(){
-        ArrayList<Employee> sort_result = new ArrayList<>();
+    private ArrayList<Employee> sortEmployee(){
+        ArrayList<Employee> sortResult = new ArrayList<>();
 
-        for(String employee_num : search_result_){
-            sort_result.add(employee_.get(employee_num));
+        for(String employeeNum : searchResult){
+            sortResult.add(employee.get(employeeNum));
         }
 
-        Collections.sort(sort_result, new Comparator<Employee>(){
+        Collections.sort(sortResult, new Comparator<Employee>(){
             public int compare(Employee o1, Employee o2) {
                 if(o1.getEmployedYear()<o2.getEmployedYear()) {
                     return -1;
@@ -32,58 +32,58 @@ public class EmployeeHandler {
             }
         });
 
-        return sort_result;
+        return sortResult;
     }
   
-    public void AddEmployee(ArrayList<String> options, ArrayList<String> parameters){
+    public void addEmployee(ArrayList<String> options, ArrayList<String> parameters){
         AddCommand addCommand = new AddCommand(options, parameters);
         Employee employeeData = addCommand.ExecuteJob();
         employee.put(employeeData.getEmployeeNum(), employeeData);
     }
 
     public EmployeeHandler(){
-        employee_ = new HashMap<>();
-        search_result_ = new ArrayList<>();
+        employee = new HashMap<>();
+        searchResult = new ArrayList<>();
     }
 
-    public int SearchEmployee(ArrayList<String> option, ArrayList<String> search_item){
+    public int searchEmployee(ArrayList<String> option, ArrayList<String> searchItem){
         SchCommand search_base = new SchCommand();
-        search_result_ = search_base.executeJob(this.employee_, option, search_item);
+        searchResult = search_base.executeJob(this.employee, option, searchItem);
 
-        return search_result_.size();
+        return searchResult.size();
     }
 
-    public void DeleteEmployee(ArrayList<String> option, ArrayList<String> schItem){
+    public void deleteEmployee(ArrayList<String> option, ArrayList<String> searchItem){
         DelCommand searchBase = new DelCommand();
-        ArrayList<String> employeeList = searchBase.executeJob(this.employee, option, schItem);
+        ArrayList<String> employeeList = searchBase.executeJob(this.employee, option, searchItem);
 
-        PrintEmployee(employeeList, option.get(0).equals("-p"));
+        //PrintEmployee(employeeList, option.get(0).equals("-p"));
 
         for(String employeeNum : employeeList) {
             employee.remove(employeeNum);
         }
     }
 
-    public void ModifyEmployee(ArrayList<String> option, ArrayList<String> search_item){
+    public void modifyEmployee(ArrayList<String> option, ArrayList<String> searchItem){
     }
 
     // Del이나 Mod동작 SCH -> Print -> DEL or MOD ??
-    public void PrintEmployee(String Command, ArrayList<String> option, ArrayList<String> search_item){
-        if(search_result_.size()==0) System.out.println(Command + ",NONE");
+    public void printEmployee(String Command, ArrayList<String> option, ArrayList<String> searchItem){
+        if(searchResult.size()==0) System.out.println(Command + ",NONE");
         else {
             if (option.get(0).equals("p")) {
-                ArrayList<Employee> sort_result = SortEmployee();
+                ArrayList<Employee> sortResult = sortEmployee();
 
-                if (sort_result.size() > 5){
-                    sort_result = new ArrayList<>(sort_result.subList(0,5));
+                if (sortResult.size() > 5){
+                    sortResult = new ArrayList<>(sortResult.subList(0,5));
                 }
 
-                for (Employee employee : sort_result) {
+                for (Employee employee : sortResult) {
                     System.out.println(Command + "," + employee.getName());
                 }
 
             } else {
-                System.out.println(Command + "," + search_result_.size());
+                System.out.println(Command + "," + searchResult.size());
             }
         }
     }

@@ -38,6 +38,7 @@ public class EmployeeHandler {
     public void addEmployee(ArrayList<String> options, ArrayList<String> parameters){
         AddCommand addCommand = new AddCommand(options, parameters);
         Employee employeeData = addCommand.ExecuteJob(this.employee, options, parameters);
+        //Add Sort Logic
         if(employeeData != null) employee.put(employeeData.getEmployeeNum(), employeeData);
     }
 
@@ -56,8 +57,6 @@ public class EmployeeHandler {
     public void deleteEmployee(ArrayList<String> option, ArrayList<String> searchItem){
         DelCommand searchBase = new DelCommand();
         ArrayList<String> employeeList = searchBase.executeJob(this.employee, option, searchItem);
-
-        //PrintEmployee(employeeList, option.get(0).equals("-p"));
 
         for(String employeeNum : employeeList) {
             employee.remove(employeeNum);
@@ -87,6 +86,5 @@ public class EmployeeHandler {
             }
         }
     }
-
 }
 

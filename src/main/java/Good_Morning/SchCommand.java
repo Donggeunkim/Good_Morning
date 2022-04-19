@@ -27,13 +27,28 @@ public class SchCommand {
 
     private SchHandler setSchType(String schKey){
         SchHandler schHandler = null;
-        if(schKey.equals("employeeNum")) schHandler = new schWithEmpNum();
-        if(schKey.equals("name")) schHandler = new schWithName();
-        if(schKey.equals("cl")) schHandler = new schWithCl();
-        if(schKey.equals("phoneNum")) schHandler = new schWithPhoneNum();
-        if(schKey.equals("birthday")) schHandler = new schWithBirthday();
-        if(schKey.equals("certi")) schHandler = new schWithCerti();
-
+        switch(schKey){
+            case "employeeNum":
+                schHandler = new schWithEmpNum();
+                break;
+            case "name":
+                schHandler = new schWithName();
+                break;
+            case "cl":
+                schHandler = new schWithCl();
+                break;
+            case "phoneNum":
+                schHandler = new schWithPhoneNum();
+                break;
+            case "birthday":
+                schHandler = new schWithBirthday();
+                break;
+            case "certi":
+                schHandler = new schWithCerti();
+                break;
+            default:
+                return null;
+        }
         return schHandler;
     }
 }

@@ -7,7 +7,6 @@ import java.util.TreeMap;
 public class SchCommand {
 
     public ArrayList<String> executeJob(TreeMap<String, Employee> employee, ArrayList<String> option, ArrayList<String> schItem){
-
         ArrayList<String> result = new ArrayList<>();
         String schKey = schItem.get(0);
         String schValue = schItem.get(1);
@@ -16,25 +15,18 @@ public class SchCommand {
         if (schHandler==null) return result;
 
         if (schKey.equals("employeeNum")){
-            schValue = getEmployedYearNum(schValue);
-            if(schHandler.searchEmpNum(employee, option, schValue) != null)
-                result.add(schHandler.searchEmpNum(employee, option, schValue));
+            String searchResult = schHandler.searchEmpNum(employee, option, schValue);
+            if(searchResult != null)
+                result.add(searchResult);
         }
         else {
             for(Entry<String, Employee> entry : employee.entrySet()) {
-                if(schHandler.searchEmpNum(entry, option, schValue) != null)
-                    result.add(schHandler.searchEmpNum(entry, option, schValue));
+                String searchResult = schHandler.searchEmpNum(entry, option, schValue);
+                if(searchResult != null)
+                    result.add(searchResult);
             }
         }
         return result;
-    }
-
-    private String getEmployedYearNum(String employeeNum){
-        int year = Integer.parseInt(employeeNum.substring(0,2));
-        if (year < 22)
-            return "20" + employeeNum;
-        else
-            return "19" + employeeNum;
     }
 
     private SchHandler getSchType(String schKey){

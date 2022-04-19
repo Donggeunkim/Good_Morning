@@ -50,30 +50,27 @@ public class EmployeeHandler {
     }
 
     private String printEmployee(String Command, ArrayList<String> option){
-
-        String result = "";
         if(searchResult.size()==0) {
             System.out.println(Command + ",NONE");
             return Command + ",NONE";
         }
-        else {
-            if (option.get(0).equals("-p")) {
-                ArrayList<Employee> sortResult = new ArrayList<>();
-                for(String employeeNum : searchResult){
-                    if (sortResult.size() >= 5) break;
-                    sortResult.add(this.employee.get(employeeNum));
-                }
 
-                for (Employee employee : sortResult) {
-                    System.out.println(Command + "," + employee.getSixParams());
-                    result += Command + "," + employee.getSixParams() + "\n";
-                }
-                return result;
-
-            } else {
-                System.out.println(Command + "," + searchResult.size());
-                return Command + "," + searchResult.size();
+        if (option.get(0).equals("-p")) {
+            String result = "";
+            ArrayList<Employee> sortResult = new ArrayList<>();
+            for(String employeeNum : searchResult){
+                if (sortResult.size() >= 5) break;
+                sortResult.add(this.employee.get(employeeNum));
             }
+
+            for (Employee employee : sortResult) {
+                System.out.println(Command + "," + employee.getSixParams());
+                result += Command + "," + employee.getSixParams() + "\n";
+            }
+            return result;
+        } else {
+            System.out.println(Command + "," + searchResult.size());
+            return Command + "," + searchResult.size();
         }
     }
 }

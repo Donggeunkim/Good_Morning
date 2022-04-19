@@ -19,7 +19,7 @@ class SchCommandTest {
         employeeHandler = new EmployeeHandler();
 
         option1 = new ArrayList<>();
-        option1.add("-p");
+        option1.add(" ");
         option1.add(" ");
         option1.add(" ");
 
@@ -117,10 +117,12 @@ class SchCommandTest {
         String filePath = "input4add.txt";
         ArrayList<String> commandLines = FileIo.readInputFile(filePath);
 
+        ArrayList<String> outputStringList = new ArrayList<>();
         Parser parser = new Parser();
         for(String commandLine : commandLines) {
             parser.splitCommandLine(commandLine);
-            employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
+            if (parser.executeJob(employeeHandler) != null)
+                outputStringList.add(parser.executeJob(employeeHandler));
         }
 
         ArrayList<String> schItem = new ArrayList<>();
@@ -129,6 +131,6 @@ class SchCommandTest {
 
         System.out.println("total size : " + employeeHandler.employee.size());
         System.out.println(employeeHandler.searchEmployee(option1, schItem));
-        assertEquals(33503, employeeHandler.searchEmployee(option1, schItem));
+        assertEquals("SCH,33503", employeeHandler.searchEmployee(option1, schItem));
     }
 }

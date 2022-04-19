@@ -12,7 +12,7 @@ public class Main {
             return;
         }
 
-        ArrayList<String> outputStingList = new ArrayList<>();
+        ArrayList<String> outputStringList = new ArrayList<>();
         String inputFilePath = args[0];
         String outputFilePath = args[1];
         
@@ -20,28 +20,14 @@ public class Main {
 
         EmployeeHandler employeeHandler = new EmployeeHandler();
         Parser parser = new Parser();
-        for(String commandLine : commandLines) {
-            parser.splitCommnadLine(commandLine);
 
-            // main에서 처리?
-            switch (parser.getCommand()){
-                case "ADD":
-                    employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
-                    break;
-                case "SCH":
-                    outputStingList.add(employeeHandler.searchEmployee(parser.getOptions(), parser.getValues()));
-                    break;
-                case "DEL":
-                    outputStingList.add(employeeHandler.deleteEmployee(parser.getOptions(), parser.getValues()));
-                    break;
-                case "MOD":
-                    outputStingList.add(employeeHandler.modifyEmployee(parser.getOptions(), parser.getValues()));
-                    break;
-                default :
-                    break;
-            }
+        for(String commandLine : commandLines) {
+            parser.splitCommandLine(commandLine);
+            if (parser.executeJob(employeeHandler) != null)
+                outputStringList.add(parser.executeJob(employeeHandler));
         }
-        FileIo.writePrint2File(outputFilePath, outputStingList);
+
+        FileIo.writePrint2File(outputFilePath, outputStringList);
 
     }
 }

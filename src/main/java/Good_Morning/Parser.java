@@ -21,7 +21,23 @@ public class Parser {
         return values;
     }
 
-    public void splitCommnadLine(String line){
+    public String executeJob(EmployeeHandler employeeHandler){
+        switch (getCommand()){
+            case "ADD":
+                employeeHandler.addEmployee(getOptions(), getValues());
+                return null;
+            case "SCH":
+                return employeeHandler.searchEmployee(getOptions(), getValues());
+            case "DEL":
+                return employeeHandler.deleteEmployee(getOptions(), getValues());
+            case "MOD":
+                return employeeHandler.modifyEmployee(getOptions(), getValues());
+            default :
+                return null;
+        }
+    }
+
+    public void splitCommandLine(String line){
         List<String> words = Arrays.asList(line.split(","));
 
         command = words.get(0);

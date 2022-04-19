@@ -50,7 +50,7 @@ public class DelCommandTest {
 
         Parser parser = new Parser();
         for(String commandLine : commandLines) {
-            parser.splitCommnadLine(commandLine);
+            parser.splitCommandLine(commandLine);
             employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
         }
 

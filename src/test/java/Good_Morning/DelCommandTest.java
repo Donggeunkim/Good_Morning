@@ -51,10 +51,12 @@ public class DelCommandTest {
 
         ArrayList<String> outputStringList = new ArrayList<>();
         Parser parser = new Parser();
+
         for(String commandLine : commandLines) {
             parser.splitCommandLine(commandLine);
-            if (parser.executeJob(employeeHandler) != null)
-                outputStringList.add(parser.executeJob(employeeHandler));
+            String result = parser.executeJob(employeeHandler);
+            if (result != null)
+                outputStringList.add(result);
         }
 
         ArrayList<String> schItem = new ArrayList<>();

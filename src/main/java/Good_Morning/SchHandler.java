@@ -11,8 +11,17 @@ interface SchHandler<T>{
 class schWithEmpNum implements SchHandler<TreeMap<String, Employee>>{
     @Override
     public String searchEmpNum(TreeMap<String, Employee> employee, ArrayList<String> option, String schValue) {
-        if(!employee.containsKey(schValue)) return null; // validation 메서드로 뺄까..?
-        return employee.get(schValue).getEmployedYearNum();
+        String employedYearNum = getEmployedYearNum(schValue);
+        if(!employee.containsKey(employedYearNum)) return null;
+        return employee.get(employedYearNum).getEmployedYearNum();
+    }
+
+    private String getEmployedYearNum(String employeeNum){
+        int year = Integer.parseInt(employeeNum.substring(0,2));
+        if (year < 22)
+            return "20" + employeeNum;
+        else
+            return "19" + employeeNum;
     }
 }
 

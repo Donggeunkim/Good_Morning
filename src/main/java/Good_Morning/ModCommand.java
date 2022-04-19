@@ -5,7 +5,7 @@ import java.util.*;
 
 public class ModCommand extends SchCommand{
 
-    public ArrayList<String> executeJob(HashMap<String, Employee> Employee, ArrayList<String> EmployeeNum,
+    public ArrayList<String> executeJob(HashMap<String, Employee> Employee, ArrayList<String> EmployeeYearNum,
                                                 ArrayList<String> Parameter) {
         String ModKey, ModValue;
         ArrayList<String> result = new ArrayList<>();
@@ -20,22 +20,22 @@ public class ModCommand extends SchCommand{
 
         if (!checkModKey(ModKey)) return result;
 
-        for (String employeeNum : EmployeeNum) {
+        for (String searchResult : EmployeeYearNum) {
             switch (ModKey){
                 case "name":
-                    Employee.get(employeeNum).setName(ModValue);
+                    Employee.get(searchResult).setName(ModValue);
                     break;
                 case "cl":
-                    Employee.get(employeeNum).setCl(ModValue);
+                    Employee.get(searchResult).setCl(ModValue);
                     break;
                 case "phoneNum":
-                    Employee.get(employeeNum).setPhoneNum(ModValue);
+                    Employee.get(searchResult).setPhoneNum(ModValue);
                     break;
                 case "birthday":
-                    Employee.get(employeeNum).setBirthday(ModValue);
+                    Employee.get(searchResult).setBirthday(ModValue);
                     break;
                 case "certi":
-                    Employee.get(employeeNum).setCerti(ModValue);
+                    Employee.get(searchResult).setCerti(ModValue);
                     break;
                 default :
                     return result;

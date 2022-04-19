@@ -1,7 +1,7 @@
 package Good_Morning;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public abstract class Command {
     ArrayList<String> options;
@@ -12,6 +12,6 @@ public abstract class Command {
         this.parameters = parameters;
     }
 
-    public abstract Employee ExecuteJob(HashMap<String, Employee> employee, ArrayList<String> options, ArrayList<String> parameters);
+    public abstract Employee ExecuteJob(TreeMap<String, Employee> employee, ArrayList<String> options, ArrayList<String> parameters);
 }
 

@@ -9,29 +9,17 @@ public class Parser {
     private ArrayList<String> options;
     private ArrayList<String> values;
 
-    public String getCommand() {
-        return command;
-    }
-
-    public ArrayList<String> getOptions() {
-        return options;
-    }
-
-    public ArrayList<String> getValues() {
-        return values;
-    }
-
     public String executeJob(EmployeeHandler employeeHandler){
-        switch (getCommand()){
+        switch (this.command){
             case "ADD":
-                employeeHandler.addEmployee(getOptions(), getValues());
+                employeeHandler.addEmployee(this.options, this.values);
                 return null;
             case "SCH":
-                return employeeHandler.searchEmployee(getOptions(), getValues());
+                return employeeHandler.searchEmployee(this.options, this.values);
             case "DEL":
-                return employeeHandler.deleteEmployee(getOptions(), getValues());
+                return employeeHandler.deleteEmployee(this.options, this.values);
             case "MOD":
-                return employeeHandler.modifyEmployee(getOptions(), getValues());
+                return employeeHandler.modifyEmployee(this.options, this.values);
             default :
                 return null;
         }

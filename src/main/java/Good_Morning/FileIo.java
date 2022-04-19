@@ -55,7 +55,7 @@ public class FileIo {
 
         FileWriter writer = new FileWriter(filePath);
         for(String str: outputPrintList) {
-            writer.write(str + System.lineSeparator());
+            writer.write(removeEnter(str) + System.lineSeparator());
         }
         writer.close();
     }
@@ -89,5 +89,12 @@ public class FileIo {
             return false;
         }
         return true;
+    }
+
+    static String removeEnter(String str) {
+        if (str.endsWith("\n")) {
+            return str.substring(0, str.length() - 1);
+        }
+        return str;
     }
 }

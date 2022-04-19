@@ -3,16 +3,15 @@ package Good_Morning;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public class AddCommand extends Command{
-    String employeeNum;
-    String name;
-    String cl;
-    String phoneNum;
-    String birthday;
-    String certi;
+public class AddCommand {
+    private String employeeNum;
+    private String name;
+    private String cl;
+    private String phoneNum;
+    private String birthday;
+    private String certi;
 
     public AddCommand(ArrayList<String> options, ArrayList<String> parameters) {
-        super(options, parameters);
         this.employeeNum = parameters.get(0);
         this.name = parameters.get(1);
         this.cl = parameters.get(2);
@@ -21,15 +20,25 @@ public class AddCommand extends Command{
         this.certi = parameters.get(5);
     }
 
-    @Override
     public Employee ExecuteJob(TreeMap<String, Employee> employee, ArrayList<String> options, ArrayList<String> parameters) {
         if(isExistEmployeeNum(employee)) return null;
+        if(!isValidParameters()) return null;
         Employee employeeData = new Employee(this.employeeNum, this.name, this.cl, this.phoneNum, this.birthday, this.certi);
         return employeeData;
     }
 
     private boolean isExistEmployeeNum(TreeMap<String, Employee> employee) {
         if(employee.get(this.employeeNum) == null) return false;
+        return true;
+    }
+
+    private boolean isValidParameters() {
+        if(this.employeeNum == null || this.employeeNum.isEmpty()) return false;
+        if(this.name == null || this.name.isEmpty()) return false;
+        if(this.cl == null || this.cl.isEmpty()) return false;
+        if(this.phoneNum == null || this.phoneNum.isEmpty()) return false;
+        if(this.birthday == null || this.birthday.isEmpty()) return false;
+        if(this.certi == null || this.certi.isEmpty()) return false;
         return true;
     }
 }

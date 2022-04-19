@@ -39,10 +39,10 @@ public class EmployeeHandler {
     }
 
     public String modifyEmployee(ArrayList<String> option, ArrayList<String> searchItem){
-        SchCommand search_base = new SchCommand();
+        SchCommand searchBase = new SchCommand();
         ModCommand modCommand = new ModCommand();
 
-        searchResult = search_base.executeJob(this.employee, option, searchItem);
+        searchResult = searchBase.executeJob(this.employee, option, searchItem);
         result = printEmployee("MOD", option);
         modCommand.executeJob(this.employee, searchResult, searchItem);
         return result;

@@ -23,7 +23,6 @@ public class Main {
         for(String commandLine : commandLines) {
             parser.splitCommnadLine(commandLine);
 
-            // main에서 처리?
             switch (parser.getCommand()){
                 case "ADD":
                     employeeHandler.addEmployee(parser.getOptions(), parser.getValues());

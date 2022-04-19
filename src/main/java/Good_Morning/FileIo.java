@@ -21,10 +21,8 @@ public class FileIo {
             throw e;
         }
 
-        // 경로 및 파일명 체크
         if (!isValidFileName(filePath)) return null;
 
-        // 확장자 체크
         if(!checkFileName(fileName)) {
             System.out.println("ERROR :: File extension NOT 'TXT'");
             return null;
@@ -44,10 +42,8 @@ public class FileIo {
             throw e;
         }
 
-        // 경로 및 파일명 체크
         if (!isValidFileName(filePath)) return;
 
-        // 확장자 체크
         if(!checkFileName(fileName)) {
             System.out.println("ERROR :: File extension NOT 'TXT'");
             return;
@@ -67,14 +63,12 @@ public class FileIo {
     }
 
     public static boolean isValidFileName(String filePath) {
-        //'/'와 '\' 이 두가지가 들어오면 안된다.
         for (int i = 0; i < filePath.length(); i++) {
             if (filePath.charAt(i) == '/') return false;
             if (filePath.charAt(i) == '\\') return false;
         }
-        //길이는 1 ~ 30 글자 까지 허용
         if (!(filePath.length() >= 1 && filePath.length() <= 30)) return false;
-        //. [] () , 띄어쓰기, AZ, az, 0 9 까지 허용
+
         for (int i = 0; i < filePath.length(); i++) {
             if (filePath.charAt(i) == '.') continue;
             if (filePath.charAt(i) == '[') continue;

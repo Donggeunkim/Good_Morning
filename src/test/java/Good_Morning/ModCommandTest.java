@@ -36,14 +36,14 @@ public class ModCommandTest {
     void setModCommandTest01() {
         ArrayList<String> searchItem = new ArrayList<>(Arrays.asList("employeeNum", "75266735", "certi", "PRO"));
         employeeHandler.modifyEmployee(option, searchItem);
-        String result = employeeHandler.employee.get("75266735").getCerti();
+        String result = employeeHandler.employee.get("1975266735").getCerti();
         assertEquals("PRO", result);
 
         searchItem = new ArrayList<>(Arrays.asList("certi", "ADV", "cl", "CL2"));
         employeeHandler.modifyEmployee(option, searchItem);
-        String result1 = employeeHandler.employee.get("18882535").getCl();
-        String result2 = employeeHandler.employee.get("06490407").getCl();
-        String result3 = employeeHandler.employee.get("84349963").getCl();
+        String result1 = employeeHandler.employee.get("2018882535").getCl();
+        String result2 = employeeHandler.employee.get("2006490407").getCl();
+        String result3 = employeeHandler.employee.get("1984349963").getCl();
         assertEquals("CL2", result1);
         assertEquals("CL2", result2);
         assertEquals("CL2", result3);
@@ -53,7 +53,7 @@ public class ModCommandTest {
     void setModCommandTest02() {
         ArrayList<String> searchItem = new ArrayList<>(Arrays.asList("75266735", "75266735", "PRO", "certi"));
         employeeHandler.modifyEmployee(option, searchItem);
-        String result = employeeHandler.employee.get("75266735").getCerti();
+        String result = employeeHandler.employee.get("1975266735").getCerti();
         assertEquals("ADV", result);
     }
 

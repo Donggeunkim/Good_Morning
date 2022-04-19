@@ -1,8 +1,8 @@
 package Good_Morning;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 interface SchHandler<T>{
     String searchEmpNum(T employeeEntry, ArrayList<String> option, String schValue);
@@ -73,9 +73,9 @@ class schWithCerti implements SchHandler<Entry<String, Employee>>{
     }
 }
 
-class schWithEmpNum implements SchHandler<HashMap<String, Employee>>{
+class schWithEmpNum implements SchHandler<TreeMap<String, Employee>>{
     @Override
-    public String searchEmpNum(HashMap<String, Employee> employee, ArrayList<String> option, String schValue) {
+    public String searchEmpNum(TreeMap<String, Employee> employee, ArrayList<String> option, String schValue) {
         if(!employee.containsKey(schValue)) return null; // validation 메서드로 뺄까..?
         return employee.get(schValue).getEmployedYearNum();
     }

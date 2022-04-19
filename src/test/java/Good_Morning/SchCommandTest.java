@@ -1,13 +1,37 @@
 package Good_Morning;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.security.Principal;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SchCommandTest {
+
+    EmployeeHandler employeeHandler;
+    ArrayList<String> option1;
+    ArrayList<String> parameter1;
+
+    @BeforeEach
+    void setup() {
+        employeeHandler = new EmployeeHandler();
+
+        option1 = new ArrayList<>();
+        option1.add("-p");
+        option1.add(" ");
+        option1.add(" ");
+
+        parameter1 = new ArrayList<>();
+        parameter1.add("14016092");
+        parameter1.add("KIM MINHWAN");
+        parameter1.add("CL3");
+        parameter1.add("010-2802-9011");
+        parameter1.add("19900109");
+        parameter1.add("PRO");
+    }
+
     @Test
     void search_test(){
         EmployeeHandler emphandler = new EmployeeHandler();
@@ -39,7 +63,6 @@ class SchCommandTest {
 
         assertEquals(1,emphandler.searchEmployee(option, schItem));
 
-        ArrayList<String> option1 = new ArrayList<>();
         option1.add("p");
         option1.add("-l");
         option1.add("");
@@ -87,5 +110,25 @@ class SchCommandTest {
 
         assertDoesNotThrow(() -> empHandler.searchEmployee(option1, schItem3));
 
+    }
+
+    @Test
+    void searchClTest() throws IOException {
+        String filePath = "input4add.txt";
+        ArrayList<String> commandLines = FileIo.readInputFile(filePath);
+
+        Parser parser = new Parser();
+        for(String commandLine : commandLines) {
+            parser.splitCommnadLine(commandLine);
+            employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
+        }
+
+        ArrayList<String> schItem = new ArrayList<>();
+        schItem.add("cl");
+        schItem.add("CL2");
+
+        System.out.println("total size : " + employeeHandler.employee.size());
+        System.out.println(employeeHandler.searchEmployee(option1, schItem));
+        assertEquals(33503, employeeHandler.searchEmployee(option1, schItem));
     }
 }

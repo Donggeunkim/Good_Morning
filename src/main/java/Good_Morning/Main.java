@@ -29,8 +29,7 @@ public class Main {
                     employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
                     break;
                 case "SCH":
-                    employeeHandler.searchEmployee(parser.getOptions(), parser.getValues());
-                    outputStingList.add(employeeHandler.printEmployee(parser.getCommand(), parser.getOptions()));
+                    outputStingList.add(employeeHandler.searchEmployee(parser.getOptions(), parser.getValues()));
                     break;
                 case "DEL":
                     outputStingList.add(employeeHandler.deleteEmployee(parser.getOptions(), parser.getValues()));

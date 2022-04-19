@@ -48,7 +48,6 @@ public class EmployeeHandler {
         return result;
     }
 
-    // Del이나 Mod동작 SCH -> Print -> DEL or MOD ??
     public String printEmployee(String Command, ArrayList<String> option){
         String result = "";
         if(searchResult.size()==0) {

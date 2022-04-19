@@ -45,12 +45,13 @@ public class DelCommandTest {
 
     @Test
     void delClSearchTest() throws IOException {
+
         String filePath = "input4Add.txt";
         ArrayList<String> commandLines = FileIo.readInputFile(filePath);
 
         Parser parser = new Parser();
         for(String commandLine : commandLines) {
-            parser.splitCommnadLine(commandLine);
+            parser.splitCommandLine(commandLine);
             employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
         }
 
@@ -62,4 +63,6 @@ public class DelCommandTest {
 
         assertEquals(66220, employeeHandler.employee.size());
     }
+
+
 }

@@ -65,10 +65,12 @@ public class AddCommandTest {
         String filePath = "input4Add.txt";
         ArrayList<String> commandLines = FileIo.readInputFile(filePath);
 
+        ArrayList<String> outputStringList = new ArrayList<>();
         Parser parser = new Parser();
         for(String commandLine : commandLines) {
             parser.splitCommandLine(commandLine);
-            employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
+            if (parser.executeJob(employeeHandler) != null)
+                outputStringList.add(parser.executeJob(employeeHandler));
         }
 
         assertEquals(99723, employeeHandler.employee.size());

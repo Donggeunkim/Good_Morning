@@ -46,11 +46,8 @@ public class EmployeeHandler {
             if (option.get(0).equals("-p")) {
                 ArrayList<Employee> sortResult = new ArrayList<Employee>();
                 for(String employeeNum : searchResult){
+                    if (sortResult.size() >= 5) break;
                     sortResult.add(this.employee.get(employeeNum));
-                }
-
-                if (sortResult.size() > 5){
-                    sortResult = new ArrayList<>(sortResult.subList(0,5));
                 }
 
                 for (Employee employee : sortResult) {

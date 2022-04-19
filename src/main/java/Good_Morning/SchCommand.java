@@ -1,13 +1,12 @@
 package Good_Morning;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Set;
+import java.util.TreeMap;
 
 public class SchCommand {
 
-    public ArrayList<String> executeJob(HashMap<String, Employee> employee, ArrayList<String> option, ArrayList<String> schItem){
+    public ArrayList<String> executeJob(TreeMap<String, Employee> employee, ArrayList<String> option, ArrayList<String> schItem){
 
         ArrayList<String> result = new ArrayList<>();
         String schKey = schItem.get(0);

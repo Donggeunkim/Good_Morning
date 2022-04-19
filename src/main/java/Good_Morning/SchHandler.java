@@ -22,7 +22,7 @@ class schWithPhoneNum implements SchHandler<Entry<String, Employee>>{
             phoneNum = phoneNum.split("-")[2];
         }
         if(phoneNum.equals(schValue)){
-            return employeeEntry.getValue().getEmployeeNum();
+            return employeeEntry.getValue().getEmployedYearNum();
         }
         return null;
     }
@@ -33,7 +33,7 @@ class schWithCl implements SchHandler<Entry<String, Employee>>{
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         String cl = employeeEntry.getValue().getCl();
         if(cl.equals(schValue)){
-            return employeeEntry.getValue().getEmployeeNum();
+            return employeeEntry.getValue().getEmployedYearNum();
         }
         return null;
     }
@@ -46,17 +46,17 @@ class schWithBirthday implements SchHandler<Entry<String, Employee>>{
         String findOption = option.get(1);
 
         if(findOption.equals("-y")){
-            birthday = birthday.substring(0,3);
+            birthday = birthday.substring(0,4);
         }
         else if(findOption.equals("-m")){
-            birthday = birthday.substring(4,5);
+            birthday = birthday.substring(4,6);
         }
         else if(findOption.equals("-d")){
             birthday = birthday.substring(6);
         }
 
         if(birthday.equals(schValue)){
-            return employeeEntry.getValue().getEmployeeNum();
+            return employeeEntry.getValue().getEmployedYearNum();
         }
         return null;
     }
@@ -67,7 +67,7 @@ class schWithCerti implements SchHandler<Entry<String, Employee>>{
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         String certi = employeeEntry.getValue().getCerti();
         if(certi.equals(schValue)){
-            return employeeEntry.getValue().getEmployeeNum();
+            return employeeEntry.getValue().getEmployedYearNum();
         }
         return null;
     }
@@ -77,7 +77,7 @@ class schWithEmpNum implements SchHandler<HashMap<String, Employee>>{
     @Override
     public String searchEmpNum(HashMap<String, Employee> employee, ArrayList<String> option, String schValue) {
         if(!employee.containsKey(schValue)) return null; // validation 메서드로 뺄까..?
-        return employee.get(schValue).getEmployeeNum();
+        return employee.get(schValue).getEmployedYearNum();
     }
 }
 
@@ -93,7 +93,7 @@ class schWithName implements SchHandler<Entry<String, Employee>>{
             name = name.split(" ")[1];
         }
         if(name.equals(schValue)){
-            return employeeEntry.getValue().getEmployeeNum();
+            return employeeEntry.getValue().getEmployedYearNum();
         }
         return null;
     }

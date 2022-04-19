@@ -1,7 +1,7 @@
 package Good_Morning;
 
 public class Employee {
-    private int employedYear;
+    private String employedYearNum;
     private String employeeNum;
     private String name;
     private String cl;
@@ -10,7 +10,7 @@ public class Employee {
     private String certi;
 
     public Employee(String employeeNum, String name, String cl, String phoneNum, String birthday, String certi){
-        setEmployedYear(employeeNum);
+        setEmployedYearNum(employeeNum);
         this.employeeNum = employeeNum;
         this.name = name;
         this.cl = cl;
@@ -19,16 +19,16 @@ public class Employee {
         this.certi = certi;
     }
 
-    public int getEmployedYear() {
-        return employedYear;
+    public String getEmployedYearNum() {
+        return employedYearNum;
     }
 
-    public void setEmployedYear(String employeeNum) {
+    public void setEmployedYearNum(String employeeNum) {
         int year = Integer.parseInt(employeeNum.substring(0,2));
         if (year < 22)
-            this.employedYear = 2000 + year;
+            this.employedYearNum = "20" + employeeNum;
         else
-            this.employedYear = 1900 + year;
+            this.employedYearNum = "19" + employeeNum;
     }
 
     public String getEmployeeNum() {
@@ -37,7 +37,7 @@ public class Employee {
 
     public void setEmployeeNum(String employeeNum) {
         this.employeeNum = employeeNum;
-        setEmployedYear(employeeNum);
+        setEmployedYearNum(employeeNum);
     }
 
     public String getName() {

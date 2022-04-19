@@ -62,7 +62,7 @@ public class AddCommandTest {
 
     @Test
     void addFuncInputFileTest() throws IOException {
-        String filePath = "C:/education/input.txt";
+        String filePath = "input4Add.txt";
         ArrayList<String> commandLines = FileIo.readInputFile(filePath);
 
         Parser parser = new Parser();
@@ -71,6 +71,6 @@ public class AddCommandTest {
             employeeHandler.addEmployee(parser.getOptions(), parser.getValues());
         }
 
-        assertEquals(99761, employeeHandler.employee.size());
+        assertEquals(99723, employeeHandler.employee.size());
     }
 }

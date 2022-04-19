@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DelCommandTest {
     EmployeeHandler employeeHandler;
@@ -15,28 +16,15 @@ public class DelCommandTest {
     @BeforeEach
     void setup() {
         employeeHandler = new EmployeeHandler();
-
-        option1 = new ArrayList<>();
-        option1.add(" ");
-        option1.add(" ");
-        option1.add(" ");
-
-        parameter1 = new ArrayList<>();
-        parameter1.add("14016092");
-        parameter1.add("KIM MINHWAN");
-        parameter1.add("CL3");
-        parameter1.add("010-2802-9011");
-        parameter1.add("19900109");
-        parameter1.add("PRO");
+        option1 = new ArrayList<>(Arrays.asList(" ", " ", " "));
+        parameter1 = new ArrayList<>(Arrays.asList("14016092", "KIM MINHWAN", "CL3", "010-2802-9011", "19900109", "PRO"));
     }
 
     @Test
     void delFuncTest(){
         employeeHandler.addEmployee(option1, parameter1);
 
-        ArrayList<String> schItem = new ArrayList<>();
-        schItem.add("employeeNum");
-        schItem.add("14016092");
+        ArrayList<String> schItem = new ArrayList<>(Arrays.asList("employeeNum", "14016092"));
 
         employeeHandler.deleteEmployee(option1, schItem);
 
@@ -59,9 +47,7 @@ public class DelCommandTest {
                 outputStringList.add(result);
         }
 
-        ArrayList<String> schItem = new ArrayList<>();
-        schItem.add("cl");
-        schItem.add("CL2");
+        ArrayList<String> schItem = new ArrayList<>(Arrays.asList("cl", "CL2"));
 
         employeeHandler.deleteEmployee(option1, schItem);
 

@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AddCommandTest {
     EmployeeHandler employeeHandler;
@@ -18,26 +19,10 @@ public class AddCommandTest {
     void setup() {
         employeeHandler = new EmployeeHandler();
 
-        option1 = new ArrayList<>();
-        option1.add(" ");
-        option1.add(" ");
-        option1.add(" ");
+        option1 = new ArrayList<>(Arrays.asList(" ", " ", " "));
+        parameter1 = new ArrayList<>(Arrays.asList("14016092", "KIM MINHWAN", "CL3", "010-2802-9011", "19900109", "PRO"));
+        parameter2 = new ArrayList<>(Arrays.asList("14016093", "KIM MINHWAN", "CL3", "010-2802-9011", "19900109", "PRO"));
 
-        parameter1 = new ArrayList<>();
-        parameter1.add("14016092");
-        parameter1.add("KIM MINHWAN");
-        parameter1.add("CL3");
-        parameter1.add("010-2802-9011");
-        parameter1.add("19900109");
-        parameter1.add("PRO");
-
-        parameter2 = new ArrayList<>();
-        parameter2.add("14016093");
-        parameter2.add("KIM MINHWAN");
-        parameter2.add("CL3");
-        parameter2.add("010-2802-9011");
-        parameter2.add("19900109");
-        parameter2.add("PRO");
     }
 
     @Test

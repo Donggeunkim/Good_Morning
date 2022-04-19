@@ -23,8 +23,9 @@ public class Main {
 
         for(String commandLine : commandLines) {
             parser.splitCommandLine(commandLine);
-            if (parser.executeJob(employeeHandler) != null)
-                outputStringList.add(parser.executeJob(employeeHandler));
+            String result = parser.executeJob(employeeHandler);
+            if (result != null)
+                outputStringList.add(result);
         }
 
         FileIo.writePrint2File(outputFilePath, outputStringList);

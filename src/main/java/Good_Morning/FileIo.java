@@ -69,17 +69,9 @@ public class FileIo {
         }
         if (!(filePath.length() >= 1 && filePath.length() <= 30)) return false;
 
+        String pattern = "[a-zA-Z0-9 ._\\[\\]\\(\\)]";
         for (int i = 0; i < filePath.length(); i++) {
-            if (filePath.charAt(i) == '.') continue;
-            if (filePath.charAt(i) == '[') continue;
-            if (filePath.charAt(i) == ']') continue;
-            if (filePath.charAt(i) == '(') continue;
-            if (filePath.charAt(i) == ')') continue;
-            if (filePath.charAt(i) == ' ') continue;
-            if (filePath.charAt(i) == '_') continue;
-            if (filePath.charAt(i) >= 'A' && filePath.charAt(i) <= 'Z') continue;
-            if (filePath.charAt(i) >= 'a' && filePath.charAt(i) <= 'z') continue;
-            if (filePath.charAt(i) >= '0' && filePath.charAt(i) <= '9') continue;
+            if(String.valueOf(filePath.charAt(i)).matches(pattern)) continue;
             return false;
         }
         return true;

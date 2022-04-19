@@ -26,6 +26,15 @@ public class FileIoTest {
     }
 
     @Test
+    void checkIsvalidFileNameTest() {
+        assertEquals(false, fileIo.isValidFileName("abcABC123!@#.txt"));
+        assertEquals(false, fileIo.isValidFileName("zzz^^&&!@#.txt"));
+        assertEquals(true, fileIo.isValidFileName("input []().txt"));
+        assertEquals(true, fileIo.isValidFileName("123456789abcdefghijklmop.txt"));
+        assertEquals(true, fileIo.isValidFileName("ABCDEFGHIJKLMNOP_ _[]().txt"));
+    }
+
+    @Test
     void radInputFileTest(){
         String filePath = null;
         assertThrows(NullPointerException.class, () -> FileIo.readInputFile(filePath));

@@ -4,8 +4,8 @@ import java.util.*;
 
 public class EmployeeHandler {
     public TreeMap<String, Employee> employee;
-    public ArrayList<String> searchResult;
-    public String result;
+    private ArrayList<String> searchResult;
+    private String result;
 
     public void addEmployee(ArrayList<String> options, ArrayList<String> parameters){
         AddCommand addCommand = new AddCommand(options, parameters);
@@ -19,11 +19,13 @@ public class EmployeeHandler {
         searchResult = new ArrayList<>();
     }
 
-    public int searchEmployee(ArrayList<String> option, ArrayList<String> searchItem){
+    public String searchEmployee(ArrayList<String> option, ArrayList<String> searchItem){
         SchCommand searchBase = new SchCommand();
         searchResult = searchBase.executeJob(this.employee, option, searchItem);
 
-        return searchResult.size();
+        result = printEmployee("SCH", option);
+
+        return result;
     }
 
     public String deleteEmployee(ArrayList<String> option, ArrayList<String> searchItem){
@@ -48,7 +50,8 @@ public class EmployeeHandler {
         return result;
     }
 
-    public String printEmployee(String Command, ArrayList<String> option){
+    private String printEmployee(String Command, ArrayList<String> option){
+
         String result = "";
         if(searchResult.size()==0) {
             System.out.println(Command + ",NONE");
@@ -56,7 +59,7 @@ public class EmployeeHandler {
         }
         else {
             if (option.get(0).equals("-p")) {
-                ArrayList<Employee> sortResult = new ArrayList<Employee>();
+                ArrayList<Employee> sortResult = new ArrayList<>();
                 for(String employeeNum : searchResult){
                     if (sortResult.size() >= 5) break;
                     sortResult.add(this.employee.get(employeeNum));

@@ -10,7 +10,6 @@ public class EmployeeHandler {
     public void addEmployee(ArrayList<String> options, ArrayList<String> parameters){
         AddCommand addCommand = new AddCommand(options, parameters);
         Employee employeeData = addCommand.ExecuteJob(this.employee, options, parameters);
-        //Add Sort Logic
         if(employeeData != null) employee.put(employeeData.getEmployedYearNum(), employeeData);
     }
 

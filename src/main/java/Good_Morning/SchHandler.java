@@ -8,6 +8,32 @@ interface SchHandler<T>{
     String searchEmpNum(T employeeEntry, ArrayList<String> option, String schValue);
 }
 
+class schWithEmpNum implements SchHandler<TreeMap<String, Employee>>{
+    @Override
+    public String searchEmpNum(TreeMap<String, Employee> employee, ArrayList<String> option, String schValue) {
+        if(!employee.containsKey(schValue)) return null; // validation 메서드로 뺄까..?
+        return employee.get(schValue).getEmployedYearNum();
+    }
+}
+
+class schWithName implements SchHandler<Entry<String, Employee>>{
+    @Override
+    public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
+        String name = employeeEntry.getValue().getName();
+        String findOption = option.get(1);
+        if(findOption.equals("-f")) {
+            name = name.split(" ")[0];
+        }
+        else if(findOption.equals("-l")){
+            name = name.split(" ")[1];
+        }
+        if(name.equals(schValue)){
+            return employeeEntry.getValue().getEmployedYearNum();
+        }
+        return null;
+    }
+}
+
 class schWithPhoneNum implements SchHandler<Entry<String, Employee>>{
     @Override
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
@@ -67,32 +93,6 @@ class schWithCerti implements SchHandler<Entry<String, Employee>>{
     public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
         String certi = employeeEntry.getValue().getCerti();
         if(certi.equals(schValue)){
-            return employeeEntry.getValue().getEmployedYearNum();
-        }
-        return null;
-    }
-}
-
-class schWithEmpNum implements SchHandler<TreeMap<String, Employee>>{
-    @Override
-    public String searchEmpNum(TreeMap<String, Employee> employee, ArrayList<String> option, String schValue) {
-        if(!employee.containsKey(schValue)) return null; // validation 메서드로 뺄까..?
-        return employee.get(schValue).getEmployedYearNum();
-    }
-}
-
-class schWithName implements SchHandler<Entry<String, Employee>>{
-    @Override
-    public String searchEmpNum(Entry<String, Employee> employeeEntry, ArrayList<String> option, String schValue) {
-        String name = employeeEntry.getValue().getName();
-        String findOption = option.get(1);
-        if(findOption.equals("-f")) {
-            name = name.split(" ")[0];
-        }
-        else if(findOption.equals("-l")){
-            name = name.split(" ")[1];
-        }
-        if(name.equals(schValue)){
             return employeeEntry.getValue().getEmployedYearNum();
         }
         return null;

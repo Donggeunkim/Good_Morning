@@ -16,6 +16,7 @@ public class SchCommand {
         if (schHandler==null) return result;
 
         if (schKey.equals("employeeNum")){
+            schValue = getEmployedYearNum(schValue);
             if(schHandler.searchEmpNum(employee, option, schValue) != null)
                 result.add(schHandler.searchEmpNum(employee, option, schValue));
         }
@@ -26,6 +27,14 @@ public class SchCommand {
             }
         }
         return result;
+    }
+
+    private String getEmployedYearNum(String employeeNum){
+        int year = Integer.parseInt(employeeNum.substring(0,2));
+        if (year < 22)
+            return "20" + employeeNum;
+        else
+            return "19" + employeeNum;
     }
 
     private SchHandler getSchType(String schKey){

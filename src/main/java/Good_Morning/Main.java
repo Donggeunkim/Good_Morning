@@ -12,6 +12,7 @@ public class Main {
             return;
         }
 
+        ArrayList<String> outputStingList = new ArrayList<>();
         String inputFilePath = args[0];
         String outputFilePath = args[1];
         
@@ -29,18 +30,19 @@ public class Main {
                     break;
                 case "SCH":
                     employeeHandler.searchEmployee(parser.getOptions(), parser.getValues());
-                    employeeHandler.printEmployee(parser.getCommand(), parser.getOptions());
+                    outputStingList.add(employeeHandler.printEmployee(parser.getCommand(), parser.getOptions()));
                     break;
                 case "DEL":
-                    employeeHandler.deleteEmployee(parser.getOptions(), parser.getValues());
+                    outputStingList.add(employeeHandler.deleteEmployee(parser.getOptions(), parser.getValues()));
                     break;
                 case "MOD":
-                    employeeHandler.modifyEmployee(parser.getOptions(), parser.getValues());
+                    outputStingList.add(employeeHandler.modifyEmployee(parser.getOptions(), parser.getValues()));
                     break;
                 default :
                     break;
             }
         }
+        FileIo.writePrint2File(outputFilePath, outputStingList);
 
     }
 }

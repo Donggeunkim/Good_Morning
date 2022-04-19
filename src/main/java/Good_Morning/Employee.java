@@ -83,4 +83,8 @@ public class Employee {
     public void SetPrintInfo(String certi) {
         this.certi = certi;
     }
+
+    public String getSixParams(){
+        return employeeNum + "," + name + "," + cl + "," + phoneNum + "," + birthday + "," + certi;
+    }
 }

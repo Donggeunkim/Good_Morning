@@ -19,8 +19,8 @@ public class EmployeeHandler {
     }
 
     public int searchEmployee(ArrayList<String> option, ArrayList<String> searchItem){
-        SchCommand search_base = new SchCommand();
-        searchResult = search_base.executeJob(this.employee, option, searchItem);
+        SchCommand searchBase = new SchCommand();
+        searchResult = searchBase.executeJob(this.employee, option, searchItem);
 
         return searchResult.size();
     }

@@ -1,7 +1,7 @@
 package Good_Morning;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class AddCommand {
     private String employeeNum;
@@ -20,14 +20,14 @@ public class AddCommand {
         this.certi = parameters.get(5);
     }
 
-    public Employee ExecuteJob(HashMap<String, Employee> employee, ArrayList<String> options, ArrayList<String> parameters) {
+    public Employee ExecuteJob(TreeMap<String, Employee> employee, ArrayList<String> options, ArrayList<String> parameters) {
         if(isExistEmployeeNum(employee)) return null;
         if(!isValidParameters()) return null;
         Employee employeeData = new Employee(this.employeeNum, this.name, this.cl, this.phoneNum, this.birthday, this.certi);
         return employeeData;
     }
 
-    private boolean isExistEmployeeNum(HashMap<String, Employee> employee) {
+    private boolean isExistEmployeeNum(TreeMap<String, Employee> employee) {
         if(employee.get(this.employeeNum) == null) return false;
         return true;
     }

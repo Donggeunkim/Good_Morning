@@ -12,20 +12,23 @@ public class SchCommand {
         String schKey = schItem.get(0);
         String schValue = schItem.get(1);
 
+        SchHandler schHandler = getSchType(schKey);
+        if (schHandler==null) return result;
+
         if (schKey.equals("employeeNum")){
-            if(setSchType(schKey).searchEmpNum(employee, option, schValue) != null)
-                result.add(setSchType(schKey).searchEmpNum(employee, option, schValue));
+            if(schHandler.searchEmpNum(employee, option, schValue) != null)
+                result.add(schHandler.searchEmpNum(employee, option, schValue));
         }
         else {
             for(Entry<String, Employee> entry : employee.entrySet()) {
-                if(setSchType(schKey).searchEmpNum(entry, option, schValue) != null)
-                    result.add(setSchType(schKey).searchEmpNum(entry, option, schValue));
+                if(schHandler.searchEmpNum(entry, option, schValue) != null)
+                    result.add(schHandler.searchEmpNum(entry, option, schValue));
             }
         }
         return result;
     }
 
-    private SchHandler setSchType(String schKey){
+    private SchHandler getSchType(String schKey){
         SchHandler schHandler = null;
         switch(schKey){
             case "employeeNum":
@@ -47,7 +50,7 @@ public class SchCommand {
                 schHandler = new schWithCerti();
                 break;
             default:
-                return null;
+                break;
         }
         return schHandler;
     }

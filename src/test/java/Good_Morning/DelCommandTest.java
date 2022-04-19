@@ -45,7 +45,7 @@ public class DelCommandTest {
 
     @Test
     void delClSearchTest() throws IOException {
-        String filePath = "C:/education/input.txt";
+        String filePath = "input4Add.txt";
         ArrayList<String> commandLines = FileIo.readInputFile(filePath);
 
         Parser parser = new Parser();
@@ -60,6 +60,6 @@ public class DelCommandTest {
 
         employeeHandler.deleteEmployee(option1, schItem);
 
-        assertEquals(66428, employeeHandler.employee.size());
+        assertEquals(66220, employeeHandler.employee.size());
     }
 }

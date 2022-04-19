@@ -45,7 +45,8 @@ public class DelCommandTest {
 
     @Test
     void delClSearchTest() throws IOException {
-        String filePath = "input4add.txt";
+
+        String filePath = "input4Add.txt";
         ArrayList<String> commandLines = FileIo.readInputFile(filePath);
 
         Parser parser = new Parser();

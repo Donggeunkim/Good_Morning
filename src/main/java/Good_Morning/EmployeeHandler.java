@@ -51,6 +51,7 @@ public class EmployeeHandler {
     }
 
     private String printEmployee(String Command, ArrayList<String> option){
+
         String result = "";
         if(searchResult.size()==0) {
             System.out.println(Command + ",NONE");

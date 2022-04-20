@@ -51,7 +51,6 @@ public class EmployeeHandler {
 
     private String printEmployee(String Command, ArrayList<String> option){
         if(searchResult.size()==0) {
-            System.out.println(Command + ",NONE");
             return Command + ",NONE";
         }
 
@@ -64,12 +63,10 @@ public class EmployeeHandler {
             }
 
             for (Employee employee : sortResult) {
-                System.out.println(Command + "," + employee.getSixParams());
                 result += Command + "," + employee.getSixParams() + "\n";
             }
             return result;
         } else {
-            System.out.println(Command + "," + searchResult.size());
             return Command + "," + searchResult.size();
         }
     }

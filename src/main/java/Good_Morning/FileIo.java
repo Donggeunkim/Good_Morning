@@ -12,7 +12,7 @@ public class FileIo {
     public static String fileName;
 
     public static ArrayList<String> readInputFile(String filePath) throws IOException {
-
+        inputCmdList = new ArrayList<>();
         try {
             File fileObject = new File(filePath);
             fileName = fileObject.getName();
@@ -21,11 +21,11 @@ public class FileIo {
             throw e;
         }
 
-        if (!isValidFileName(filePath)) return null;
+        if (!isValidFileName(filePath)) return inputCmdList;
 
         if(!checkFileName(fileName)) {
             System.out.println("ERROR :: File extension NOT 'TXT'");
-            return null;
+            return inputCmdList;
         }
 
         inputCmdList = (ArrayList<String>) Files.readAllLines(Paths.get(filePath));
@@ -58,8 +58,7 @@ public class FileIo {
 
     public static boolean checkFileName(String fileName){
         String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
-        if (ext.equals("txt")) return true;
-        return false;
+        return ext.equals("txt");
     }
 
     public static boolean isValidFileName(String filePath) {
@@ -77,7 +76,7 @@ public class FileIo {
         return true;
     }
 
-    static String removeEnter(String str) {
+    private static String removeEnter(String str) {
         if (str.endsWith("\n")) {
             return str.substring(0, str.length() - 1);
         }
